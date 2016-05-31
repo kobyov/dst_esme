@@ -38,6 +38,7 @@ Assets = {
 
 local require = GLOBAL.require
 local STRINGS = GLOBAL.STRINGS
+local Combat = require "components/combat"
 
 -- The character select screen lines
 STRINGS.CHARACTER_TITLES.esme = "Headologist"
@@ -56,3 +57,12 @@ AddMinimapAtlas("images/map_icons/esme.xml")
 -- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
 AddModCharacter("esme", "FEMALE")
 
+
+local combatoverride = Combat.CanAttack
+function Combat:CanAttack(target)
+    if self.inst:HasTag("bee")
+        and target:HasTag("bee") then
+        return false
+        else return combatoverride(self, target)
+    end
+end

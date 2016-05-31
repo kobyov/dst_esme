@@ -39,6 +39,7 @@ end
 local common_postinit = function(inst) 
 	-- Minimap icon
 	inst.MiniMapEntity:SetIcon( "esme.tex" )
+    inst:AddTag("bee")
 end
 
 -- This initializes for the server only. Components are added here.
@@ -48,7 +49,7 @@ local master_postinit = function(inst)
 	
 	-- Uncomment if "wathgrithr"(Wigfrid) or "webber" voice is used
     --inst.talker_path_override = "dontstarve_DLC001/characters/"
-	
+
 	-- Stats	
 	inst.components.health:SetMaxHealth(150)
 	inst.components.hunger:SetMax(150)
